@@ -15,8 +15,11 @@ block content
     p 作: 
       a(href="https://github.com/addyosmani",target="_blank") Addy Osmani
 
-block template
+block append javascripts
   
+
+block template
+
   script#item-template(type="text/template")
     div.view
       | <input class="toggle" type="checkbox"<%= completed ? ' checked': '' %>>
