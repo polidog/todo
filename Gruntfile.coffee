@@ -16,6 +16,7 @@ module.exports = (grunt) ->
           layout: "byType"
           install: true
           verbose: false
+          cleanBowerDir: true
 
     jade:
       compile:
@@ -24,7 +25,7 @@ module.exports = (grunt) ->
         expand: true
         cwd: '<%= dir.src %>/<%= dir.jade %>' 
         src: '**/*.jade'
-        dest: '<%= dir.dist %>/'
+        dest: '<%= dir.dest %>/'
         ext: '.html'
 
     coffee:
@@ -46,10 +47,19 @@ module.exports = (grunt) ->
         files: 'bower.json',
         tasks: 'bower:install'
 
+    # web server setting
+    connect:
+      site:
+        options:
+          hostname: "localhost"
+          port: 8000
+          base: "<%= dir.dest %>"
+
 
   grunt.loadNpmTasks "grunt-bower-task"
   grunt.loadNpmTasks "grunt-contrib-jade"
   grunt.loadNpmTasks "grunt-contrib-coffee"
   grunt.loadNpmTasks "grunt-contrib-watch"
+  grunt.loadNpmTasks "grunt-contrib-connect"
 
-  grunt.registerTask 'default', ['watch']
+  grunt.registerTask 'default', ['connect','watch']
