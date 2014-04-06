@@ -8,3 +8,4 @@ class app.Todo extends Backbone.Model
   toggle: ->
     @save
       completed: !@get 'completed'
+
