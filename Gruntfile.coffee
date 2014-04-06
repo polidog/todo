@@ -29,6 +29,8 @@ module.exports = (grunt) ->
         ext: '.html'
 
     coffee:
+      options:
+        bare: true
       compile:
         expand: true
         cwd: '<%= dir.src %>/<%= dir.coffee %>'
