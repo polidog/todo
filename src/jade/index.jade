@@ -1,13 +1,40 @@
-doctype html
-html(lang="ja")
-  head
-    meta(charset="utf-8")
-    meta(http-equiv="X=UA-Compatible", content="IE=edge, chrome=1")
-    title Backbone.js - TODO MVC
-  body
-    script#item-template(type="text/template")
-    script#stats-template(type="text/template")
-    script(src="lib/jquery/jquery.js")
-    script(src="lib/underscore/underscore.js")
-    script(src="lib/backbone/backbone.js")
-    script(src="lib/backbone.localStorage/backbone.localStorage.js")
+extends ./layouts/default.jade
+block content
+  section#todoapp
+    header#header
+      h1 ToDoリスト
+      input#new-todo(placeholder="することを入力してください",autofocus)
+    section#main
+      input#toggle-all(type="checkbox")
+      label(for="toggle-all") すべて完了済みにする
+      ul#todo-list
+    footer#footer
+
+  div#info
+    p 項目をダブルクリックすると編集できます
+    p 作: 
+      a(href="https://github.com/addyosmani",target="_blank") Addy Osmani
+
+block template
+  
+  script#item-template(type="text/template")
+    div.view
+      | <input class="toggle" type="checkbox"<%= completed ? ' checked': '' %>>
+      label <%- title %>
+      button.destroy
+    input.edit(value="<%- title %>")
+
+  script#stats-template(type="text/template")
+    span#todo-count 残り
+      strong <%= remaining %>件
+    ul#filters
+      li
+        a.selected すべて
+      li
+        a(href="#/completed") 完了済み
+      li
+        a(href="#/active") 未完了
+
+    <% if (completed) { %>
+    button#clear-completed 完了済みの項目を消去(<%= complated %>件)
+    <% } %>
