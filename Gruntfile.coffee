@@ -34,7 +34,7 @@ module.exports = (grunt) ->
       compile:
         expand: true
         cwd: '<%= dir.src %>/<%= dir.coffee %>'
-        src: '**/*.coffee'
+        src: '**/**/*.coffee'
         dest: '<%= dir.dest %>/<%= dir.js %>'
         ext: '.js'
 
