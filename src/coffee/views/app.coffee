@@ -21,7 +21,8 @@ class app.AppView extends Backbone.View
     @listenTo app.Todos, 'filter', @filterAll
     @listenTo app.Todos, 'all', @render
 
-    app.Todos.fetch()
+    app.Todos.fetch
+      reset: true
 
   render: ->
     completed = app.Todos.completed().length
