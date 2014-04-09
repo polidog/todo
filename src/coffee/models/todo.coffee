@@ -1,5 +1,3 @@
-app = app || {}
-
 class app.Todo extends Backbone.Model
   defaults:
     title: ''

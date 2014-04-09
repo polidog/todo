@@ -1,16 +1,15 @@
-app = app || {}
 class TodoList extends Backbone.Collection
   model: app.Todo
   localStorage: new Backbone.LocalStorage 'todo-backbone'
 
   # 完了済みだけ取得
   completed: ->
-    @this.filter (todo)->
+    @filter (todo)->
       todo.get 'completed'
 
   # 未了のTodo項目だけフィルタリングで返す
   remaining: ->
-    @this.without.apply this, this.completed()
+    @without.apply this, this.completed()
 
   nextOrder: ->
     unless @length
@@ -20,4 +19,4 @@ class TodoList extends Backbone.Collection
   comparator: (todo)->
     todo.get 'order'
 
-app.TodoList = new TodoList()
+app.Todos = new TodoList()

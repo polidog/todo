@@ -1,6 +1,4 @@
-app = app || {}
-
-class app.AppView extends Backbone.AppView
+class app.AppView extends Backbone.View
   el: "#todoapp"
 
   statsTemplate: _.template $('#stats-template').html()
@@ -26,18 +24,18 @@ class app.AppView extends Backbone.AppView
     app.Todos.fetch()
 
   render: ->
-    complated = app.Todos.complated().length
-    remaining: app.Todos.remaining().length
+    completed = app.Todos.completed().length
+    remaining = app.Todos.remaining().length
 
     if app.Todos.length
       @$main.show()
       @$footer.show()
 
       @$footer.html @statsTemplate
-        complated: complated
+        completed: completed
         remaining: remaining
 
-      @$('#filter li a').removeClass('selected').filter('[href="#/"' + (app.TodoFilter || '') +'"]').addClass 'selected'
+      @$('#filter li a').removeClass('selected').filter('[href="#/"' + ( app.TodoFilter or '' ) + '"]').addClass 'selected'
 
     else
       @$main.hide()

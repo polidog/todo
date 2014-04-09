@@ -43,7 +43,7 @@ module.exports = (grunt) ->
         files: '<%= dir.src %>/**/*.jade'
         tasks: 'jade:compile'
       coffee:
-        files: '<%= dir.src %>/**/**/*.coffee',
+        files: ['<%= dir.src %>/**/**/*.coffee','<%= dir.src %>/**/*.coffee']
         tasks: 'coffee:compile'
       bower:
         files: 'bower.json',
